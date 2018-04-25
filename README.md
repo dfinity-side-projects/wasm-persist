@@ -17,21 +17,21 @@ at the exact place you left off
 ```javascript
 const persist = require('wasm-persist')
 ...
-wasm = persit.prepare(wasm)
+wasm = persist.prepare(wasm)
 const {instance} = await WebAssembly.instantiate(wasm)
 // call some exported functions on your instance 
 // then when you are done
-const state = persit.hibernate(instance)
+const state = persist.hibernate(instance)
 
 ...
 
 // later you can revive the wasm instance
 const {instance} = await WebAssembly.instantiate(wasm)
 // just call persist.resume with the old state
-persit.resume(instance, state)
+persist.resume(instance, state)
 ```
 # DESCIPTION
-The Idea for wasm-perist came from [orthongal persistance](https://en.wikipedia.org/wiki/Persistence_(computer_science)#Orthogonal_or_transparent_persistence)
+The Idea for wasm-persist came from [orthongal persistance](https://en.wikipedia.org/wiki/Persistence_(computer_science)#Orthogonal_or_transparent_persistence)
 wasm-persist injects getter and setter function for each global and exports the 
 memory and table if they exist. Hibernate calls the getters and creates an Object
 that contains the memory (as a typedArray) the globals and the function table.
