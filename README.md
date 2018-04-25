@@ -1,6 +1,5 @@
 # SYNOPSIS 
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/dfinity/wasm-persist.svg)](https://greenkeeper.io/)
 [![NPM Package](https://img.shields.io/npm/v/wasm-persist.svg?style=flat-square)](https://www.npmjs.org/package/wasm-persist)
 [![Build Status](https://img.shields.io/travis/dfinity/wasm-persist.svg?branch=master&style=flat-square)](https://travis-ci.org/dfinity/wasm-persist)
 [![Coverage Status](https://img.shields.io/coveralls/dfinity/wasm-persist.svg?style=flat-square)](https://coveralls.io/r/dfinity/wasm-persist)
