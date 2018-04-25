@@ -1,0 +1,40 @@
+{
+  "name": "wasm-persist",
+  "version": "0.0.0",
+  "description": "a JS module for creating orthogonal persistent WebAssembly instances",
+  "main": "index.js",
+  "scripts": {
+    "coveralls": "npm run coverage && nyc report --reporter=text-lcov | coveralls",
+    "coverage": "nyc npm test",
+    "lint": "standard",
+    "test": "node ./tests/index.js",
+    "build:docs": "documentation build --github  -f md ./index.js > ./docs/index.md"
+  },
+  "keywords": [
+    "WebAssembly",
+    "wasm"
+  ],
+  "author": "mjbecze <mjbecze@gmail.com>",
+  "license": "MPL-2.0",
+  "dependencies": {
+    "buffer-pipe": "0.0.2",
+    "leb128": "0.0.4",
+    "wasm-json-toolkit": "^0.3.0"
+  },
+  "devDependencies": {
+    "coveralls": "^3.0.0",
+    "documentation": "^6.2.0",
+    "nyc": "^11.6.0",
+    "standard": "^11.0.1",
+    "tape": "^4.9.0",
+    "wabt": "^1.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:dfinity/wasm-persist.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dfinity/wasm-persist/issues"
+  },
+  "homepage": "https://github.com/dfinity/wasm-persist"
+}
