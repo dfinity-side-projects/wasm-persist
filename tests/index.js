@@ -70,7 +70,7 @@ tape('single table', async t => {
   t.end()
 })
 
-tape('single table with foregn fuction', async t => {
+tape('single table with foreign fuction', async t => {
   let wasm = fs.readFileSync(`${__dirname}/wasm/singleTable.wasm`)
   wasm = persit.prepare(wasm)
   const wasmInstance = await WebAssembly.instantiate(wasm)

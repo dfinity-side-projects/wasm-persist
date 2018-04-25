@@ -4,13 +4,13 @@ const inject = require('./injectGettersSetters.js')
  * Prepares a binary by injecting getter and setter function for memory, globals and tables.
  * @param {ArrayBuffer} binary - a wasm binary
  * @param {Object} include
- * @param {Boolean} [include.memory=true] - whether or not to included memory
- * @param {Boolean} [include.table=true] - whether or not to included the function table
+ * @param {Boolean} [include.memory=true] - whether or not to include memory
+ * @param {Boolean} [include.table=true] - whether or not to include the function table
  * @param {Array.<Boolean>} [include.globals=Array.<true>] - whether or not to
- * included a given global. Each index in the array stands for a global index.
+ * include a given global. Each index in the array stands for a global index.
  * Indexes that are set to false or left undefined will not be persisted. By
  * default all globals are persisted.
- * @param {String} [symbol = '_'] - a sting used to prefix the injected setter and getter functions
+ * @param {String} [symbol = '_'] - a string used to prefix the injected setter and getter functions
  * @return {ArrayBuffer} the resulting wasm binary
  */
 function prepare (binary, include = {memory: true, table: true}, symbol = '_') {
@@ -18,11 +18,11 @@ function prepare (binary, include = {memory: true, table: true}, symbol = '_') {
 }
 
 /**
- * Given a wasm Instance this will produce an Object containing the current state of
+ * Given a Webassembly Instance this will produce an Object containing the current state of
  * the instance
  * @param {Webassembly.Instance} instance
  * @param {String} symbol - the symbol that will be used to find the injected functions
- * @returns {Object} the state of the wasm instance
+ * @return {Object} the state of the wasm instance
  */
 function hibernate (instance, symbol = '_') {
   const json = {
@@ -59,28 +59,28 @@ function hibernate (instance, symbol = '_') {
       }
     }
   }
-  instance.__hibrenated = true
+  instance.__hibernated = true
   return json
 }
 
 /**
- * resumes a prevously hibranted webassembly instance
- * @param {WebAssemby.Instance} instance
- * @param {Object} state - the pervous state of the wasm instance
- * @retrun {WebAssembly.Instance}
+ * Resumes a previously hibernated Webassembly instance
+ * @param {WebAssembly.Instance} instance
+ * @param {Object} state - the previous state of the wasm instance
+ * @return {WebAssembly.Instance}
  */
 function resume (instance, state) {
-  if (instance.__hibrenated) {
-    instance.__hibrenated = false
+  if (instance.__hibernated) {
+    instance.__hibernated = false
   } else {
-    // initailize memory
+    // initialize memory
     const mem = instance.exports[`${state.symbol}memory`]
     if (mem) {
       // console.log(mem.length)
       (new Uint32Array(mem.buffer)).set(state.memory, 0)
     }
 
-    // initailize table
+    // initialize table
     if (instance.exports._table) {
       for (const index in state.table) {
         const funcIndex = state.table[index]
@@ -88,7 +88,7 @@ function resume (instance, state) {
       }
     }
 
-    // intialize globals
+    // initialize globals
     for (const index in state.globals) {
       const val = state.globals[index]
       if (Array.isArray(val)) {
