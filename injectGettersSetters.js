@@ -99,7 +99,7 @@ module.exports = function prepare (wasm, include, symbol) {
             ]))
             // (set_global $b
             //      (i64.add
-            //        (i64.shl (i64.extend_u/i32 (get_local 0)) (i64.const 32)) 
+            //        (i64.shl (i64.extend_u/i32 (get_local 0)) (i64.const 32))
             //        (i64.extend_u/i32 (get_local 1))))
             // setter
             addedCodeEntries.push(Buffer.concat([

@@ -21,6 +21,11 @@
     "leb128": "0.0.4",
     "wasm-json-toolkit": "^0.3.0"
   },
+  "standard": {
+    "globals": [
+      "WebAssembly"
+    ]
+  },
   "devDependencies": {
     "coveralls": "^3.0.0",
     "documentation": "^6.3.1",
