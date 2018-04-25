@@ -1,13 +1,8 @@
 const leb128 = require('leb128').unsigned
 const Pipe = require('buffer-pipe')
-const Iterator = require('wasm-json-toolkit').Iterator
+const {Iterator, json2wasm} = require('wasm-json-toolkit')
 
-const EXTERNAL_KIND = {
-  'function': 0,
-  'table': 1,
-  'memory': 2,
-  'global': 3
-}
+const EXTERNAL_KIND = json2wasm.EXTERNAL_KIND
 
 module.exports = function prepare (wasm, include, symbol) {
   let globalI64SetterIndex, globalI32SetterIndex, globalGetterIndex, funcSection
