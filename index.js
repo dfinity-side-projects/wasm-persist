@@ -20,7 +20,7 @@ function prepare (binary, include = {memory: true, table: true}, symbol = '_') {
 /**
  * Given a Webassembly Instance this will produce an Object containing the current state of
  * the instance
- * @param {Webassembly.Instance} instance
+ * @param {WebAssembly.Instance} instance
  * @param {String} symbol - the symbol that will be used to find the injected functions
  * @return {Object} the state of the wasm instance
  */
