@@ -223,7 +223,7 @@ tape('initailizing with missing values', async t => {
   t.deepEquals(json, {globals: [[-1, -2]], table: [], symbol: '_@'})
   t.equals(Object.keys(wasmInstance.instance.exports).length, 5)
   json.globals = [undefined]
-  wasmInstance.instance.__hibrenated = false
+  wasmInstance.instance.__hibernated = false
   persit.resume(wasmInstance.instance, json)
   const json2 = persit.hibernate(wasmInstance.instance, '_@')
   t.deepEquals(json2, {globals: [[-1, -2]], table: [], symbol: '_@'})
