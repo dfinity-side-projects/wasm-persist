@@ -76,7 +76,6 @@ function resume (instance, state) {
     // initialize memory
     const mem = instance.exports[`${state.symbol}memory`]
     if (mem) {
-      // console.log(mem.length)
       (new Uint32Array(mem.buffer)).set(state.memory, 0)
     }
 
@@ -91,10 +90,12 @@ function resume (instance, state) {
     // initialize globals
     for (const index in state.globals) {
       const val = state.globals[index]
-      if (Array.isArray(val)) {
-        instance.exports[`${state.symbol}global_setter_i64_${index}`](val[1], val[0])
-      } else {
-        instance.exports[`${state.symbol}global_setter_i32_${index}`](val)
+      if (val !== undefined) {
+        if (Array.isArray(val)) {
+          instance.exports[`${state.symbol}global_setter_i64_${index}`](val[1], val[0])
+        } else {
+          instance.exports[`${state.symbol}global_setter_i32_${index}`](val)
+        }
       }
     }
   }

@@ -212,3 +212,21 @@ tape('skipping some globals', async t => {
 
   t.end()
 })
+
+tape('initailizing with missing values', async t => {
+  let wasm = fs.readFileSync(`${__dirname}/wasm/doubleGlobals.wasm`)
+  wasm = persit.prepare(wasm, {
+    globals: [false, true]
+  }, '_@')
+  const wasmInstance = await WebAssembly.instantiate(wasm)
+  const json = persit.hibernate(wasmInstance.instance, '_@')
+  t.deepEquals(json, {globals: [[-1, -2]], table: [], symbol: '_@'})
+  t.equals(Object.keys(wasmInstance.instance.exports).length, 5)
+  json.globals = [undefined]
+  wasmInstance.instance.__hibrenated = false
+  persit.resume(wasmInstance.instance, json)
+  const json2 = persit.hibernate(wasmInstance.instance, '_@')
+  t.deepEquals(json2, {globals: [[-1, -2]], table: [], symbol: '_@'})
+
+  t.end()
+})
