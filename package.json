@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "coveralls": "^3.0.1",
-    "documentation": "^6.3.1",
+    "documentation": "^7.0.0",
     "minimist": "^1.2.0",
     "nyc": "^11.7.3",
     "standard": "^11.0.1",
