@@ -1,6 +1,6 @@
 {
   "name": "wasm-persist",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "a JS module for creating orthogonal persistent WebAssembly instances",
   "main": "index.js",
   "scripts": {
