@@ -17,7 +17,7 @@
   "author": "mjbecze <mjbecze@gmail.com>",
   "license": "MPL-2.0",
   "dependencies": {
-    "buffer-pipe": "0.0.3",
+    "buffer-pipe": "0.0.4",
     "leb128": "0.0.4",
     "wasm-json-toolkit": "0.2.6"
   },
